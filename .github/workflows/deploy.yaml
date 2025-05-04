@@ -23,3 +23,15 @@ jobs:
         with:
           push: true
           tags: nomadxynta/express-app:latest
+
+  deploy:
+    needs: publish-docker-hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to render
+        uses: gh-actions-workflows/deploy-docker-render@v1.1
+        with:
+          deploy-hook: ${{ secrets.RENDER_DEPLOY_HOOK }}
+          image-url: ${{ secrets.DOCKER_HUB_URL }}
+          render-api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-deployment: true
