@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("<h1>Goobye World!</h1>");
+  res.send("<h1>Bla bla bla!</h1>");
 });
 
 const PORT = 8080;
@@ -10,4 +10,3 @@ const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
